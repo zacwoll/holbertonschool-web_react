@@ -1,0 +1,6 @@
+node_modules/
+*/node_modules/*
+/*/node_modules
+0x00-TypeScript/task_0/node_modules/*
+0x00-TypeScript/*/dist
+0x00-TypeScript/dist/bundle.js
