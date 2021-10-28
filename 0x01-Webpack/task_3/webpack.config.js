@@ -49,6 +49,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: 'Task 3',
+            favicon: './assets/favicon.ico',
         }),
     ],
     optimization: {
