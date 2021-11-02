@@ -4,13 +4,16 @@
   "description": "task 5 of 0x02-react intro",
   "main": "./src/index.js",
   "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/config/setupTests.js"
+    ],
     "verbose": true,
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./src/assetMock.js",
-      "\\.(css|less|scss|sass)$": "./src/assetMock.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetMock.js",
+      "\\.(css|less|scss|sass)$": "<rootDir>/assetMock.js"
     }
   },
   "scripts": {
