@@ -1,19 +1,27 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
-module.exports = {
+module.exports = ({ mode } = { mode: "production" }) => {
+  console.log(`mode is: ${ mode }`);
+
+  return {
+    mode: "production",
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js'
     },
     devtool: "inline-source-map",
     devServer: {
-      contentBase: path.join(__dirname, './dist'),
+      static: {
+        directory: path.join(__dirname, '../dist')
+      },
       port: 8564,
-      liveReload: true,
-      historyApiFallback: true,
+      hot: true,
+      open: true,
+      compress: true,
     },
-    mode: "production",
     module: {
         rules: [
             {
@@ -42,4 +50,11 @@ module.exports = {
             }
         ],
     },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./public/index.html"
+      }),
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  }
 };

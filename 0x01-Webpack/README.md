@@ -253,3 +253,5 @@ invoke using the cli
 ` npx webpack serve --open `
 
 And now your page will open on in your default browser, and will rebuild on changes to your files!
+
+https://blog.logrocket.com/versatile-webpack-configurations-react-application/

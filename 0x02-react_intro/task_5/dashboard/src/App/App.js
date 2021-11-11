@@ -1,4 +1,4 @@
-// import logo from '../assets/holberton-logo.jpg';
+import logo from '../assets/holberton-logo.jpg';
 import './App.css';
 import { getFullYear, getFooterCopy } from '../utils/utils';
 import React from 'react';
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <img src='./assets/holberton-logo.jpg' alt="Holberton Logo: Red Seahorse"/>
+        <img src={logo} alt="Holberton Logo: Red Seahorse"/>
         <h1>School dashboard</h1>
       </div>
         <div className="App-body">
