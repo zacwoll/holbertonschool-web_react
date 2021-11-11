@@ -8,7 +8,7 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
-import { getLatestNotification } from '../../../../task_1/dashboard/src/utils/utils';
+import { getLatestNotification } from '../utils/utils';
 
 function App({isLoggedIn}) {
   const listCourses = [
