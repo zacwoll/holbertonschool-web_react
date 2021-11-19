@@ -1,21 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './CourseList.css';
+import { StyleSheet, css } from 'aphrodite';
 
-const rowStyle = {
-    backgroundColor: '#f5f5f5ab',
-};
+const styles = StyleSheet.create({
+    rowStyle: {
+        backgroundColor: '#f5f5f5ab',
+    },
 
-const headerRowStyle = {
-    backgroundColor: '#deb5b545',
-}
+    headerRowStyle: {
+        backgroundColor: '#deb5b545',
+    },
+
+    greyBottomBorder: {
+        borderBottom: '1px solid grey',
+    }
+});
 
 function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
     return (
         <>
-            <tr style={isHeader ? headerRowStyle : rowStyle}>
+            <tr className={isHeader ? css(styles.headerRowStyle) : css(styles.rowStyle)}>
                 { isHeader && !textSecondCell && (
-                    <th colSpan={ 2 }>{ textFirstCell }</th>
+                    <th className={css(styles.greyBottomBorder)}
+                    colSpan={ 2 }>{ textFirstCell }</th>
                 ) }
                 { isHeader && textSecondCell && (
                     <>

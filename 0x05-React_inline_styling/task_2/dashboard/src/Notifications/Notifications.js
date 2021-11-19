@@ -1,5 +1,4 @@
 import React from 'react';
-import './Notifications.css';
 import close_icon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
@@ -70,10 +69,7 @@ class Notifications extends React.Component {
 
         return (
             <>
-            <div className={css(styles.menuItem)} id="menuItem">
-                Your notifications
-            </div>
-            { displayDrawer &&
+            { displayDrawer ?
                     <div className={ css(styles.Notifications) } id="Notifications">
                     { listNotifications.length > 0 ? (
                         <>
@@ -105,7 +101,12 @@ class Notifications extends React.Component {
                         </>
                     ) : <p>No new notification for now</p> }
                 </div>
-            }
+            : (
+                <div className={ css(styles.menuItem) } id="menuItem">
+                    Your notifications
+                </div>
+            )
+        }
             </>
         )
     }
