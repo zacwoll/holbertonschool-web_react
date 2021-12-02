@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: '24px 0px 0px',
         width: '90%',
+        maxWidth: '600px',
         margin: '0 auto',
     },
     bodySectionWithMargin: {

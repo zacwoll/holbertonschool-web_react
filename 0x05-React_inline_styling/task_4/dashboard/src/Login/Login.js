@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white', /* #ff4242 */
         fontSize: '24px',
         border: '.5px solid lightgrey',
+        alignSelf: 'center',
     },
 });
 
