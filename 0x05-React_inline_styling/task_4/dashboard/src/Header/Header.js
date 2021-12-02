@@ -1,5 +1,4 @@
 import logo from '../assets/holberton-logo.jpg';
-// import './Header.css';
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
