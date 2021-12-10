@@ -2,7 +2,7 @@
 $latest_task = "task_0"
 $latest_task_num = [int]$latest_task.Substring($latest_task.Length - 1)
 foreach ($item in Get-ChildItem) {
-    # only select items with lanes of 5 or more
+    # only select items with lengths of 5 or more
     if ($item.Name.Length -lt 5) {
         continue
     }
