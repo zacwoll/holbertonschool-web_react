@@ -28,12 +28,12 @@ describe('<App />', () => {
         expect(wrapper.state('displayDrawer')).toBe(false);
     })
 
-    if ('verifies that the state property displayDrawer correctly updates', () => {
-        const wrapper = mount(<App />);
-        wrapper.handleDisplayDrawer();
-        expect(wrapper.state('displayDrawer')).to.equal('true');
-        wrapper.handleHideDrawer();
-        expect(wrapper.state('displayDrawer')).to.equal('false');
+    it('verifies that the state property displayDrawer correctly updates', () => {
+        const instance = mount(<App />).instance();
+        instance.setState({displayDrawer: false});
+        expect(instance.state['displayDrawer']).toBe(false);
+        instance.handleDisplayDrawer();
+        expect(instance.state['displayDrawer']).toBe(true);
     });
 
     it('renders an <App /> component checking for <Notifications />', () => {
