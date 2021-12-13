@@ -1,11 +1,20 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Login from './Login';
 import { StyleSheetTestUtils } from 'aphrodite';
 
 beforeEach(() => {
     StyleSheetTestUtils.suppressStyleInjection();
 });
+
+// Flush Promises allows simulate to finish changing component
+function flushPromises() {
+    return new Promise(resolve => setImmediate(resolve));
+}
 
 describe('<Login />', () => {
     it('renders an <Login /> component checking for App-Login', () => {
@@ -29,13 +38,17 @@ describe('<Login />', () => {
         expect(wrapper.find('form #submit').props().disabled).toBe(true);
     });
 
-    it('verify that after changing the value of the two inputs, the button is enabled', () => {
-        const wrapper = shallow(<Login />);
-        wrapper.find({ name: 'email' }).simulate('change', { target: { name: 'email', value: 'john.doe@email.com' } });
-        wrapper.find({ name: 'password' }).simulate('change', { target: { name: 'password', value: 'notapassword' } });
-        // setState is asynchronous and it doesn't fire in time to enable the submit button
-        // but this is only true in jest!! the login page reacts accordingly
-        wrapper.find({ name: 'password' }).simulate('change', { target: { name: 'password', value: 'notapassword' } });
+    // Mounted component, ran change events, flushed promises, updated component, and tested disabled prop
+    test('verify that after changing the value of the two inputs, the button is enabled', async () => {
+        const wrapper = mount(<Login />);
+        const emailInput = wrapper.find({ id: 'email'});
+        const pwdInput = wrapper.find({ id: 'pwd' })
+
+        // Find the correct elements and activate their onchanges
+        emailInput.simulate('change', { target: { id: 'email', value: 'john.doe@email.com' } });
+        pwdInput.simulate('change', { target: { id: 'pwd', value: 'notapassword' } });
+        await flushPromises;
+        wrapper.update();
         expect(wrapper.find({ type: 'submit' }).props().disabled).toBe(false);
     });
 });
