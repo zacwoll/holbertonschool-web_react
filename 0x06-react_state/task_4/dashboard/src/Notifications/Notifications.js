@@ -108,18 +108,18 @@ class Notifications extends React.PureComponent {
             <>
             { displayDrawer ? (
                 <div className={ css(styles.Notifications) } id="Notifications">
+                    <button
+                        className={ css(styles.NotificationsButton) }
+                        aria-label="Close"
+                        onClick={ handleHideDrawer }
+                    ><img
+                            className={ css(styles.NotificationsButtonImg) }
+                            src={ close_icon }
+                            alt="Close"
+                        />
+                    </button>
                     { listNotifications && listNotifications.length > 0 ? (
                         <>
-                            <button
-                                className={css(styles.NotificationsButton)}
-                                aria-label="Close"
-                                onClick={handleHideDrawer}
-                            ><img
-                            className={css(styles.NotificationsButtonImg)}
-                                    src={ close_icon }
-                                    alt="Close"
-                                />
-                            </button>
                             <p>Here is the list of notifications</p>
                             <ul className={css(styles.NotificationUnorderedList)}>
                                 { listNotifications.map((notification) => (

@@ -26,7 +26,7 @@ function Footer() {
                 <a href="#">Contact Us</a>
             )}
 
-            <p>Copyright { getFullYear() } - { getFooterCopy(true) }</p>
+            <p> Copyright { getFullYear() } - { getFooterCopy(true) }</p>
         </div>
     );
 }
