@@ -28,14 +28,15 @@ describe('<Notifications />', () => {
         expect(wrapper.find('#menuItem')).toHaveLength(1);
     });
 
+
+    it('does not display the menuItem when displayDrawer is true', () => {
+        const wrapper = shallow(<Notifications displayDrawer={ true } />);
+        expect(wrapper.find('#menuItem')).toHaveLength(0);
+    });
+
     it('does not display div#Notifications when displayDrawer is false', () => {
         const wrapper = shallow(<Notifications displayDrawer={ false } />);
         expect(wrapper.find('#Notifications')).toHaveLength(0);
-    });
-
-    it('does display the menuItem when displayDrawer is true', () => {
-        const wrapper = shallow(<Notifications displayDrawer={ true } />);
-        expect(wrapper.find('#menuItem')).toHaveLength(1);
     });
 
     it('does not display div#Notifications when displayDrawer is true', () => {
